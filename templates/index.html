@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/index.css') }}">
+</head>
+
+<body>
+
+<!-- Query Form HTML -->
+<div id="form-container">
+    <div class="app-header">Use the Open AI Query below to query our Documents!</div>
+
+    <div class="prompt-text">Enter your question below</div>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        {{ form.query_string() }}
+        {{ form.submit() }}
+    </form>
+
+    <div id="query-response-display">
+        <p>
+            {{ query_response }}
+        </p>
+    </div>
+
+    <div id="powered-by-tag">
+        <div id="powered-by-text">Powered By OpenAI</div>
+        <img src="{{ url_for('static', filename='images/chatgpt_icon.png') }}" alt="chatgpt_logo">
+    </div>
+</div>
+
+</body>
+</html> 

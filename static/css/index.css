@@ -1,0 +1,46 @@
+.app-header {
+    font-family: Helvetica, sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 18px;
+    margin-bottom: 30px;
+}
+
+#form-container {
+    width: 25%;
+    background-color: rgb(208, 216, 225);
+    border: 3px solid rgb(23, 147, 255);
+    border-radius: 15px;
+    padding: 35px;
+    box-shadow: 7px 7px 15px black;
+}
+
+.prompt-text {
+    margin-bottom: 10px;
+}
+
+form {
+    font-family: Arial, sans-serif;
+    margin-bottom: 28px;
+}
+
+#query-response-display {
+    background-color: white;
+    margin-top: 15px;
+    padding: 5px;
+    height: 80px;
+    box-shadow: 1px 1px 7px;
+}
+
+#powered-by-tag {
+    margin-top: 8px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#powered-by-tag img {
+    height: 20px;
+    width: 20px;
+    margin-left: 5px;
+}
