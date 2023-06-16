@@ -1,14 +1,15 @@
-
 <!DOCTYPE html>
 <html>
 
 <head>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/index.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/pangolin.css') }}">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+
 </head>
 
 <body>
 
-<div id="page-header">Ask Darwin</div>
+<div id="page-header">Ask Darwin: Pangolin</div>
 
 <div id="form-section">
 <!-- Query Form HTML -->
@@ -16,7 +17,7 @@
         <div class="app-header">Use the Open AI Query below to query our Documents!</div>
 
         <div class="prompt-text">Enter your question below</div>
-        <form method="POST">
+        <form method="POST" onsubmit="$('#loading').show();">
             {{ form.hidden_tag() }}
             {{ form.query_string() }}
             {{ form.submit() }}
@@ -26,6 +27,10 @@
             <p>
                 {{ query_response }}
             </p>
+        </div>
+
+        <div id="loading" style="display:none;">
+            <img src="{{ url_for('static', filename='images/loading_wheel.gif') }}" alt="loading-wheel"/>
         </div>
 
         <div id="powered-by-tag">

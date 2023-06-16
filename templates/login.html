@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+{% import "bootstrap/wtf.html" as wtf %}
+
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/login.css') }}">
+</head>
+
+<body>
+
+<div id="page-header">Ask Darwin</div>
+
+<div id="form-section">
+<!-- Login Form HTML -->
+    <div id="form-container">
+        {{ wtf.quick_form(form) }}
+        <!--<form method="POST">
+            {{ form.hidden_tag() }}
+            {{ form.password() }}
+            {{ form.submit() }}
+        </form>
+        -->
+
+    </div>
+</div>
+
+</body>
+</html> 

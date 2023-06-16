@@ -1,5 +1,5 @@
 body {
-    background-image: url('/static/images/Palau Coral.jpg');
+    background-image: url('/static/images/pangolin_background.jpg');
     font-family: Candara, Calibri, Segoe, Segoe UI, Optima, Arial, sans-serif;
 }
 
@@ -63,4 +63,11 @@ form {
     height: 20px;
     width: 20px;
     margin-left: 5px;
+}
+
+/* Loading Spinner */
+#loading {
+    height: 35px;
+    width: 35px;
+    margin: 10px;
 }
