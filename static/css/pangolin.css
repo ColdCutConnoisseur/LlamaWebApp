@@ -1,5 +1,6 @@
 body {
     background-image: url('/static/images/pangolin_background.jpg');
+    background-size: 100%;
     font-family: Candara, Calibri, Segoe, Segoe UI, Optima, Arial, sans-serif;
 }
 
