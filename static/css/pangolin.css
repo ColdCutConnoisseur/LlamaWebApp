@@ -67,7 +67,13 @@ form {
 
 /* Loading Spinner */
 #loading {
+    display: none;
     height: 35px;
     width: 35px;
     margin: 10px;
+}
+
+#loading img {
+    height: 30px;
+    width: 30px;
 }

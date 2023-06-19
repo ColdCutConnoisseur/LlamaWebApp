@@ -112,6 +112,13 @@ def pangolin_query():
     storage_folder17 = "/pangolin_index_storage_folder17"
     storage_folder18 = "/pangolin_index_storage_folder18"
     storage_folder19 = "/pangolin_index_storage_folder19"
+    storage_folder20 = "/pangolin_index_storage_folder20"
+    storage_folder21 = "/pangolin_index_storage_folder21"
+    storage_folder22 = "/pangolin_index_storage_folder22"
+    storage_folder23 = "/pangolin_index_storage_folder23"
+    storage_folder24 = "/pangolin_index_storage_folder24"
+    storage_folder25 = "/pangolin_index_storage_folder25"
+    storage_folder26 = "/pangolin_index_storage_folder26"
 
     loaded_index = combine_pangolin_indices(
                                 storage_folder1,
@@ -132,7 +139,14 @@ def pangolin_query():
                                 storage_folder16,
                                 storage_folder17,
                                 storage_folder18,
-                                storage_folder19
+                                storage_folder19,
+                                storage_folder20,
+                                storage_folder21,
+                                storage_folder22,
+                                storage_folder23,
+                                storage_folder24,
+                                storage_folder25,
+                                storage_folder26
                                 )
 
     query_text = None
@@ -146,13 +160,19 @@ def pangolin_query():
         if loaded_index: # Filter out bad index loads (which will return 'None')
             query_engine = loaded_index.as_query_engine()
 
-            query_prompt = f"The 'user query' is '{query_text}'."+\
+            query_prompt_prev = f"The 'user query' is '{query_text}'."+\
                            "  If the information required to respond to the 'user query'"+\
-                           " is not found within 'chunk1' through 'chunk19',"+\
+                           " is not found within 'chunk1' through 'chunk26',"+\
                            "then return 'not found' as a response." +\
                            "  Prioritize specific information from the listed 'chunks'"+\
                            " and respond to the 'user query' without including any information"+\
                            " that is not directly being asked by the 'user query'."
+            
+            query_prompt = f"The 'user query' is '{query_text}'."+\
+                            " Please only respond to the 'user query' with information" +\
+                            " found only in the provided 'chunks', 'chunk1' to 'chunk26'.  If the information" +\
+                            " is not found within those 'chunks' then respond with" +\
+                            " 'not found'."
             
             query_response = query_engine.query(query_prompt)
 
