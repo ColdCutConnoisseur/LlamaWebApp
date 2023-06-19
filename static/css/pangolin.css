@@ -45,11 +45,14 @@ form {
 }
 
 #query-response-display {
+    display: inline-block;
     background-color: white;
     margin-top: 15px;
     padding: 5px;
     height: 200px;
+    width: 100%;
     box-shadow: 1px 1px 7px;
+    overflow: scroll;
 }
 
 #powered-by-tag {
