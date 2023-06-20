@@ -1,5 +1,14 @@
+nav {
+    background-color: white;
+    width: 100%;
+}
+
+nav a {
+    color: purple;
+}
+
 body {
-    background-image: url('/static/images/pangolin_background.jpg');
+    background-image: url('/static/images/pangolin_background2.jpg');
     background-size: 100%;
     font-family: Candara, Calibri, Segoe, Segoe UI, Optima, Arial, sans-serif;
 }

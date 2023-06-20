@@ -1,19 +1,24 @@
 """TBG Darwin OpenAI / Llamaindex website"""
 
-from flask import Flask, render_template, url_for, session, redirect, flash
+from flask import Flask, render_template, url_for, session, redirect, flash, request
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, PasswordField
 from wtforms.validators import DataRequired
 from werkzeug.security import check_password_hash
 from flask_bootstrap import Bootstrap
 
+from flask_mobility import Mobility
+from flask_mobility.decorators import mobile_template
+
 import config_file as cf
 from index_helpers import load_index, combine_pangolin_indices
+
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = cf.WTF_KEY
 
 bootstrap = Bootstrap(app)
+Mobility(app)
 
 P_HASH_CHECK = cf.PW_HASH
 
@@ -66,12 +71,13 @@ def check_login_page():
 
 
 @app.route('/', methods=['GET', 'POST'])
-def index():
+@mobile_template('{mobile/}index.html')
+def index(template):
 
     user_logged_in = check_login_state(session)
     
     if user_logged_in:
-        loaded_index = load_index("/new_index_storage_folder") # CONSIDER: Either load each time or set as 'session' object
+        loaded_index = load_index("/new_index_storage_folder")
 
         query_text = None
         query_response = ''
@@ -85,14 +91,12 @@ def index():
                 query_engine = loaded_index.as_query_engine()
                 query_response = query_engine.query(query_text)
 
-        return render_template('index.html', form=q_form, query_response=query_response)
+        return render_template(template, form=q_form, query_response=query_response)
     
     else:
         return redirect('/login')
 
-@app.route('/pangolin', methods=['GET', 'POST'])
-def pangolin_query():
-
+def load_pangolin_resources():
     storage_folder1 = "/pangolin_index_storage_folder1"
     storage_folder2 = "/pangolin_index_storage_folder2"
     storage_folder3 = "/pangolin_index_storage_folder3"
@@ -148,7 +152,15 @@ def pangolin_query():
                                 storage_folder25,
                                 storage_folder26
                                 )
+    return loaded_index
 
+
+@app.route('/pangolin', methods=['GET', 'POST'])
+@mobile_template('{mobile/}pangolin.html')
+def pangolin_query(template):
+
+    
+    
     query_text = None
     query_response = ''
 
@@ -176,4 +188,4 @@ def pangolin_query():
             
             query_response = query_engine.query(query_prompt)
 
-    return render_template('pangolin.html', form=q_form, query_response=query_response)
+    return render_template(template, form=q_form, query_response=query_response)

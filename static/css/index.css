@@ -1,4 +1,14 @@
+.navbar {
+    background-color: white;
+}
+
+.navbar li {
+    list-style-type: none;
+    margin: 0px 30px 0px 30px;
+}
+
 body {
+    margin: 0px;
     background-image: url('/static/images/Palau Coral.jpg');
     font-family: Candara, Calibri, Segoe, Segoe UI, Optima, Arial, sans-serif;
 }
@@ -33,6 +43,7 @@ body {
     border-radius: 15px;
     padding: 35px;
     box-shadow: 7px 7px 15px black;
+    min-width: 300px;
 }
 
 .prompt-text {

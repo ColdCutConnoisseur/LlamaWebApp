@@ -1,39 +1,65 @@
+{% extends "bootstrap/base.html" %}
+{% block title %}Ask Darwin{% endblock %}
 
-<!DOCTYPE html>
-<html>
+{% block styles %}
+{{ super() }}
+<!-- Bootstrap CSS -->
+<!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">-->
+<!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">-->
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/index.css') }}">
+{% endblock %}
 
-<head>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/index.css') }}">
-</head>
 
-<body>
+{% block navbar %}
+<div class="container">
+    <nav class="navbar navbar-expand-sm navbar-light bg-light">
+        <a class="navbar-brand" href="#">Ask Darwin</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-<div id="page-header">Ask Darwin</div>
-
-<div id="form-section">
-<!-- Query Form HTML -->
-    <div id="form-container">
-        <div class="app-header">Use the Open AI Query below to query our Documents!</div>
-
-        <div class="prompt-text">Enter your question below</div>
-        <form method="POST">
-            {{ form.hidden_tag() }}
-            {{ form.query_string() }}
-            {{ form.submit() }}
-        </form>
-
-        <div id="query-response-display">
-            <p>
-                {{ query_response }}
-            </p>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/pangolin">Pangolin</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Grants</a>
+                </li>
+            </ul>
         </div>
+    </nav>
+</div>
+{% endblock %}
 
-        <div id="powered-by-tag">
-            <div id="powered-by-text">Powered By OpenAI</div>
-            <img src="{{ url_for('static', filename='images/chatgpt_icon.png') }}" alt="chatgpt_logo">
+{% block content %}
+    <div id="page-header">Ask Darwin</div>
+
+    <div id="form-section">
+    <!-- Query Form HTML -->
+        <div id="form-container">
+            <div class="app-header">Use the Open AI Query below to query our Documents!</div>
+
+            <div class="prompt-text">Enter your question below</div>
+            <form method="POST">
+                {{ form.hidden_tag() }}
+                {{ form.query_string() }}
+                {{ form.submit() }}
+            </form>
+
+            <div id="query-response-display">
+                <p>
+                    {{ query_response }}
+                </p>
+            </div>
+
+            <div id="powered-by-tag">
+                <div id="powered-by-text">Powered By OpenAI</div>
+                <img src="{{ url_for('static', filename='images/chatgpt_icon.png') }}" alt="chatgpt_logo">
+            </div>
         </div>
     </div>
-</div>
-
-</body>
-</html> 
+{% endblock %}
