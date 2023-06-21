@@ -49,7 +49,8 @@ def check_login_state(session_obj):
     
 
 @app.route('/login', methods=['GET', 'POST'])
-def check_login_page():
+@mobile_template('{mobile/}login.html')
+def check_login_page(template):
 
     user_logged_in = check_login_state(session)
 
@@ -70,7 +71,7 @@ def check_login_page():
             else:
                 flash('Invalid password!')
 
-        return render_template('login.html', form=login_form)
+        return render_template(template, form=login_form)
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -200,7 +201,3 @@ def load_pangolin_index(template):
             query_response = query_engine.query(query_prompt)
 
     return render_template(template, form=q_form, query_response=query_response)
-    
-    
-
-
