@@ -1,0 +1,17 @@
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/loading.css') }}">
+
+<script>
+    function navigate() {
+        window.location.href = 'pangolin_loaded';
+    }
+    fetch('load_pangolin_index').then(navigate);
+</script>
+
+<body>
+
+  <div id="loading-container">
+      <h1>Loading Resources.  Please Wait</h1>
+      <img src="{{ url_for('static', filename='images/dot_loader.gif') }}" alt="loading-dot"/>
+  </div>
+
+</body>

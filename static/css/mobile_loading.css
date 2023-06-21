@@ -1,0 +1,17 @@
+#loading-container {
+    margin-top: 200px;
+    font-family: Candara, Calibri, Segoe, Segoe UI, Optima, Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    font-size: 45px;
+}
+
+/*#loading-container img {
+    width: 65px;
+    height: 25px;
+}*/

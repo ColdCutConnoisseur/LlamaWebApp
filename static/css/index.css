@@ -1,10 +1,18 @@
+.invisible {
+    display: none;
+}
+
+.container {
+    width: 100%;
+}
+
 .navbar {
     background-color: white;
 }
 
 .navbar li {
     list-style-type: none;
-    margin: 0px 30px 0px 30px;
+    margin: 15px 60px 0px 60px;
 }
 
 body {
@@ -32,7 +40,7 @@ body {
     font-family: Helvetica, sans-serif;
     font-size: 24px;
     font-weight: 700;
-    line-height: 18px;
+    line-height: 22px;
     margin-bottom: 30px;
 }
 

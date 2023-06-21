@@ -1,6 +1,9 @@
 """TBG Darwin OpenAI / Llamaindex website"""
 
-from flask import Flask, render_template, url_for, session, redirect, flash, request
+import time
+from threading import Thread
+
+from flask import Flask, render_template, url_for, session, redirect, flash, request, g
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, PasswordField
 from wtforms.validators import DataRequired
@@ -155,12 +158,19 @@ def load_pangolin_resources():
     return loaded_index
 
 
-@app.route('/pangolin', methods=['GET', 'POST'])
-@mobile_template('{mobile/}pangolin.html')
+@app.route('/pangolin')
+@mobile_template('{mobile/}loading.html')
 def pangolin_query(template):
+    return render_template(template)
 
-    
-    
+@app.route('/load_pangolin_index')
+def old_load():
+    return "Finished!"
+
+@app.route('/pangolin_loaded', methods=['GET', 'POST'])
+@mobile_template('{mobile/}pangolin.html')
+def load_pangolin_index(template):
+    p_index = load_pangolin_resources()
     query_text = None
     query_response = ''
 
@@ -169,16 +179,17 @@ def pangolin_query(template):
     if q_form.validate_on_submit():
         query_text = q_form.query_string.data
 
-        if loaded_index: # Filter out bad index loads (which will return 'None')
-            query_engine = loaded_index.as_query_engine()
+        if p_index: # Filter out bad index loads (which will return 'None')
+            print("Index exists!")
+            query_engine = p_index.as_query_engine()
 
             query_prompt_prev = f"The 'user query' is '{query_text}'."+\
-                           "  If the information required to respond to the 'user query'"+\
-                           " is not found within 'chunk1' through 'chunk26',"+\
-                           "then return 'not found' as a response." +\
-                           "  Prioritize specific information from the listed 'chunks'"+\
-                           " and respond to the 'user query' without including any information"+\
-                           " that is not directly being asked by the 'user query'."
+                        "  If the information required to respond to the 'user query'"+\
+                        " is not found within 'chunk1' through 'chunk26',"+\
+                        "then return 'not found' as a response." +\
+                        "  Prioritize specific information from the listed 'chunks'"+\
+                        " and respond to the 'user query' without including any information"+\
+                        " that is not directly being asked by the 'user query'."
             
             query_prompt = f"The 'user query' is '{query_text}'."+\
                             " Please only respond to the 'user query' with information" +\
@@ -189,3 +200,7 @@ def pangolin_query(template):
             query_response = query_engine.query(query_prompt)
 
     return render_template(template, form=q_form, query_response=query_response)
+    
+    
+
+

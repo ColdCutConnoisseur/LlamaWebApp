@@ -10,14 +10,19 @@
     background-color: white;
 }
 
+.navbar button {
+    margin-top: 12px;
+    margin-left: 95px;
+}
+
 .navbar li {
     list-style-type: none;
     margin: 15px 60px 0px 60px;
 }
 
 body {
-    background-image: url('/static/images/pangolin_background2.jpg');
-    background-size: 100%;
+    margin: 0px;
+    background-image: url('/static/images/Palau Coral.jpg');
     font-family: Candara, Calibri, Segoe, Segoe UI, Optima, Arial, sans-serif;
 }
 
@@ -26,8 +31,9 @@ body {
     display: flex;
     justify-content: center;
     color: white;
-    font-size: 70px;
+    font-size: 60px;
     letter-spacing: 3px;
+    text-align: center;
 }
 
 #form-section {
@@ -40,17 +46,18 @@ body {
     font-family: Helvetica, sans-serif;
     font-size: 24px;
     font-weight: 700;
-    line-height: 22px;
+    line-height: 24px;
     margin-bottom: 30px;
 }
 
 #form-container {
-    width: 25%;
+    width: 90%;
     background-color: rgb(208, 216, 225);
     border: 3px solid rgb(23, 147, 255);
     border-radius: 15px;
     padding: 35px;
     box-shadow: 7px 7px 15px black;
+    min-width: 300px;
 }
 
 .prompt-text {
@@ -63,14 +70,11 @@ form {
 }
 
 #query-response-display {
-    display: inline-block;
     background-color: white;
     margin-top: 15px;
     padding: 5px;
     height: 200px;
-    width: 100%;
     box-shadow: 1px 1px 7px;
-    overflow: scroll;
 }
 
 #powered-by-tag {
@@ -84,17 +88,4 @@ form {
     height: 20px;
     width: 20px;
     margin-left: 5px;
-}
-
-/* Loading Spinner */
-#loading {
-    display: none;
-    height: 35px;
-    width: 35px;
-    margin: 10px;
-}
-
-#loading img {
-    height: 30px;
-    width: 30px;
 }
