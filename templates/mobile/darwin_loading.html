@@ -1,0 +1,18 @@
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/mobile_loading.css') }}">
+
+<script>
+    function navigate() {
+        window.location.href = 'darwin';
+    }
+    fetch('load_darwin_index').then(navigate);
+</script>
+
+<body>
+
+  <div id="loading-container">
+      <h1>Loading Resources.</h1>
+      <h1>Please Wait</h1>
+      <img src="{{ url_for('static', filename='images/dot_loader.gif') }}" alt="loading-dot"/>
+  </div>
+
+</body>

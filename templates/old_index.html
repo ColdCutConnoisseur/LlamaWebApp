@@ -1,0 +1,54 @@
+
+{% extends "bootstrap/base.html" %}
+
+
+{% block head %}
+
+{% block title %}Ask Darwin{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/index.css') }}">
+{% endblock %}
+
+{% endblock %}
+
+{% block body %}
+{% block navbar %}
+<nav class="navbar navbar-inverse">
+    <div class="navbar-nav">
+        <a class="nav-item nav-link active" href="/">Home <span class="sr-only"></span></a>
+        <a class="nav-item nav-link" href="/pangolin">Pangolin</a>
+        <a class="nav-item nav-link" href="/">Grants</a>
+    </div>
+</nav>
+{% endblock %}
+
+{% block content %}
+<div id="page-header">Ask Darwin</div>
+
+<div id="form-section">
+<!-- Query Form HTML -->
+    <div id="form-container">
+        <div class="app-header">Use the Open AI Query below to query our Documents!</div>
+
+        <div class="prompt-text">Enter your question below</div>
+        <form method="POST">
+            {{ form.hidden_tag() }}
+            {{ form.query_string() }}
+            {{ form.submit() }}
+        </form>
+
+        <div id="query-response-display">
+            <p>
+                {{ query_response }}
+            </p>
+        </div>
+
+        <div id="powered-by-tag">
+            <div id="powered-by-text">Powered By OpenAI</div>
+            <img src="{{ url_for('static', filename='images/chatgpt_icon.png') }}" alt="chatgpt_logo">
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% endblock %}

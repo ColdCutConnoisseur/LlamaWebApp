@@ -4,24 +4,51 @@
 <html>
 
 <head>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/login.css') }}">
+    <!--Set Preview Image from html page-->
+    
+    <!-- Primary Meta Tags -->
+    <title>Ask Darwin (Powered By OpenAI)</title>
+    <meta name="title" content="Ask Darwin (Powered By OpenAI)" />
+    <meta name="description" content="Query our extensive wildlife database with the efficiency of OpenAI tools!" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.askdarwin.ai/login" />
+    <meta property="og:title" content="Ask Darwin (Powered By OpenAI)" />
+    <meta property="og:description" content="Query our extensive wildlife database with the efficiency of OpenAI tools!" />
+    <meta property="og:image" content="https://www.askdarwin.ai/darwin_site_preview.png"/>
+    <!--"https://www.askdarwin.ai/darwin_preview_square.png"-->
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://www.askdarwin.ai/login" />
+    <meta property="twitter:title" content="Ask Darwin (Powered By OpenAI)" />
+    <meta property="twitter:description" content="Query our extensive wildlife database with the efficiency of OpenAI tools!" />
+    <meta property="twitter:image" content="https://www.askdarwin.ai/darwin_site_preview.png"/>
+    <!--"https://www.askdarwin.ai/darwin_preview_square.png" />-->
+    <!-- Meta Tags Generated with https://metatags.io -->
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/login.css') }}"/>
+
 </head>
 
 <body>
 
 <div id="login-wrapper">
-    <div id="page-header">Ask Darwin</div>
+    <div id="subcontainer">
+        <div id="page-header">Ask Darwin</div>
 
-    <div id="form-section">
-    <!-- Login Form HTML -->
-        <div id="form-container">
-            {{ wtf.quick_form(form) }}
-            <!--<form method="POST">
-                {{ form.hidden_tag() }}
-                {{ form.password() }}
-                {{ form.submit() }}
-            </form>
-            -->
+        <div id="form-section">
+        <!-- Login Form HTML -->
+            <div id="form-container">
+                {{ wtf.quick_form(form) }}
+                <!--<form method="POST">
+                    {{ form.hidden_tag() }}
+                    {{ form.password() }}
+                    {{ form.submit() }}
+                </form>
+                -->
+            </div>
         </div>
     </div>
 </div>

@@ -44,7 +44,7 @@
             <div class="app-header">Use the Open AI Query below to query our Documents!</div>
 
             <div class="prompt-text">Enter your question below</div>
-            <form method="POST">
+            <form method="POST" onsubmit="$('#loading').show();">
                 {{ form.hidden_tag() }}
                 {{ form.query_string() }}
                 {{ form.submit() }}
@@ -54,6 +54,10 @@
                 <p>
                     {{ query_response }}
                 </p>
+            </div>
+
+            <div id="loading">
+                <img src="{{ url_for('static', filename='images/loading_wheel.gif') }}" alt="loading-wheel"/>
             </div>
 
             <div id="powered-by-tag">

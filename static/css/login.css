@@ -6,6 +6,7 @@
 }
 
 body {
+    background-image: url('/static/images/Palau Coral.jpg');
     font-family: Candara, Calibri, Segoe, Segoe UI, Optima, Arial, sans-serif;
     font-size: 30px;
 }
@@ -13,4 +14,11 @@ body {
 #page-header {
     margin-bottom: 100px;
     font-size: 50px;
+}
+
+#subcontainer {
+    background-color: white;
+    width: 200px;
+    padding: 50px;
+    border-radius: 15px;
 }
