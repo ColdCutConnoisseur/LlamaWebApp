@@ -146,7 +146,7 @@ def load_darwin_resources():
     storage_folder95 = "/darwin_indices/darwin13_35"
     storage_folder96 = "/darwin_indices/darwin20_25"
     storage_folder97 = "/darwin_indices/darwin14_22"
-    storage_folder98 = "/darwin_indices/.DS_Store"
+    #storage_folder98 = "/darwin_indices/.DS_Store"
     storage_folder99 = "/darwin_indices/darwin12_9"
     storage_folder100 = "/darwin_indices/darwin10_12"
     storage_folder101 = "/darwin_indices/darwin6_43"
@@ -926,7 +926,7 @@ def load_darwin_resources():
                                 storage_folder95,
                                 storage_folder96,
                                 storage_folder97,
-                                storage_folder98,
+                                #storage_folder98,
                                 storage_folder99,
                                 storage_folder100,
                                 storage_folder101,

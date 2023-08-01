@@ -115,7 +115,6 @@ def combine_darwin_indices(storage_folder1,
                         storage_folder95,
                         storage_folder96,
                         storage_folder97,
-                        storage_folder98,
                         storage_folder99,
                         storage_folder100,
                         storage_folder101,
@@ -896,7 +895,7 @@ def combine_darwin_indices(storage_folder1,
     index95 = load_index(storage_folder95)
     index96 = load_index(storage_folder96)
     index97 = load_index(storage_folder97)
-    index98 = load_index(storage_folder98)
+    #index98 = load_index(storage_folder98)
     index99 = load_index(storage_folder99)
     index100 = load_index(storage_folder100)
     index101 = load_index(storage_folder101)
@@ -1677,7 +1676,6 @@ def combine_darwin_indices(storage_folder1,
         index95,
         index96,
         index97,
-        index98,
         index99,
         index100,
         index101,
@@ -2456,7 +2454,6 @@ def combine_darwin_indices(storage_folder1,
                         "chunk95",
                         "chunk96",
                         "chunk97",
-                        "chunk98",
                         "chunk99",
                         "chunk100",
                         "chunk101",
