@@ -19,35 +19,6 @@ from flask_mobility.decorators import mobile_template
 import config_file as cf
 from index_helpers import load_index, combine_pangolin_indices, combine_darwin_indices
 
-
-app = Flask(__name__)
-app.config['SECRET_KEY'] = cf.WTF_KEY
-
-bootstrap = Bootstrap(app)
-Mobility(app)
-
-P_HASH_CHECK = cf.PW_HASH
-
-class QueryForm(FlaskForm):
-    query_string = StringField('Enter your question here:', validators=[DataRequired()])
-    submit = SubmitField('Query')
-
-class LoginForm(FlaskForm):
-    password = PasswordField('Password', validators=[DataRequired()])
-    submit = SubmitField('Log In')
-
-
-def check_login_state(session_obj):
-    """Helper"""
-    try:
-        current_state = session_obj['UserSignedIn']
-
-    except KeyError:
-        session_obj['UserSignedIn'] = False
-        current_state = session_obj['UserSignedIn']
-
-    return current_state
-
 def load_darwin_resources():
     storage_folder1 = "/darwin_indices/darwin11_13"
     storage_folder2 = "/darwin_indices/darwin7_42"
@@ -1611,6 +1582,37 @@ def load_darwin_resources():
 
     return loaded_index
 
+app = Flask(__name__)
+app.config['SECRET_KEY'] = cf.WTF_KEY
+app.config['DARWIN_INDEX'] = load_darwin_resources()
+
+bootstrap = Bootstrap(app)
+Mobility(app)
+
+P_HASH_CHECK = cf.PW_HASH
+
+class QueryForm(FlaskForm):
+    query_string = StringField('Enter your question here:', validators=[DataRequired()])
+    submit = SubmitField('Query')
+
+class LoginForm(FlaskForm):
+    password = PasswordField('Password', validators=[DataRequired()])
+    submit = SubmitField('Log In')
+
+
+def check_login_state(session_obj):
+    """Helper"""
+    try:
+        current_state = session_obj['UserSignedIn']
+
+    except KeyError:
+        session_obj['UserSignedIn'] = False
+        current_state = session_obj['UserSignedIn']
+
+    return current_state
+
+
+
 def load_pangolin_resources():
     storage_folder1 = "/pangolin_index_storage_folder1"
     storage_folder2 = "/pangolin_index_storage_folder2"
@@ -1717,7 +1719,7 @@ def index(template):
     user_logged_in = check_login_state(session)
     
     if user_logged_in:
-        loaded_index = load_darwin_resources()
+        loaded_index = app.config['DARWIN_INDEX']
 
         query_text = None
         query_response = ''
