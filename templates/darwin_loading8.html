@@ -2,15 +2,15 @@
 
 <script>
     function navigate() {
-        window.location.href = '/loading_screen2';
+        window.location.href = '/create_and_set_darwin_index';
     }
-    fetch('/load_darwin_resources_step1').then(navigate);
+    fetch('/load_darwin_resources_step8').then(navigate);
 </script>
 
 <body>
 
   <div id="loading-container">
-      <h1>Loading Resource 1 of 8.  Please Wait</h1>
+      <h1>Loading Resource 8 of 8.  Please Wait</h1>
       <img src="{{ url_for('static', filename='images/dot_loader.gif') }}" alt="loading-dot"/>
   </div>
 

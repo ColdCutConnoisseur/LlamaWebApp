@@ -900,6 +900,54 @@ def load_second_darwin_index_chunk():
 
     return dict2
 
+def load_third_darwin_index_chunk():
+    indices_to_load = INDICES_PATHS[200:300]
+
+    dict3 = create_darwin_load_dict(indices_to_load, start_index=200)
+    print("Dict3 built!")
+
+    return dict3
+
+def load_fourth_darwin_index_chunk():
+    indices_to_load = INDICES_PATHS[300:400]
+
+    dict4 = create_darwin_load_dict(indices_to_load, start_index=300)
+    print("Dict4 built!")
+
+    return dict4
+
+def load_fifth_darwin_index_chunk():
+    indices_to_load = INDICES_PATHS[400:500]
+
+    dict5 = create_darwin_load_dict(indices_to_load, start_index=400)
+    print("Dict5 built!")
+
+    return dict5
+
+def load_sixth_darwin_index_chunk():
+    indices_to_load = INDICES_PATHS[500:600]
+
+    dict6 = create_darwin_load_dict(indices_to_load, start_index=500)
+    print("Dict6 built!")
+
+    return dict6
+
+def load_seventh_darwin_index_chunk():
+    indices_to_load = INDICES_PATHS[600:700]
+
+    dict7 = create_darwin_load_dict(indices_to_load, start_index=600)
+    print("Dict7 built!")
+
+    return dict7
+
+def load_eighth_darwin_index_chunk():
+    indices_to_load = INDICES_PATHS[700:]
+
+    dict8 = create_darwin_load_dict(indices_to_load, start_index=700)
+    print("Dict8 built!")
+
+    return dict8
+
 
 
 if __name__ == "__main__":

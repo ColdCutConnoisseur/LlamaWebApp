@@ -22,7 +22,13 @@ from index_helpers import (load_index,
                            combine_pangolin_indices,
                            combine_darwin_indices,
                            load_first_darwin_index_chunk,
-                           load_second_darwin_index_chunk)
+                           load_second_darwin_index_chunk,
+                           load_third_darwin_index_chunk,
+                           load_fourth_darwin_index_chunk,
+                           load_fifth_darwin_index_chunk,
+                           load_sixth_darwin_index_chunk,
+                           load_seventh_darwin_index_chunk,
+                           load_eighth_darwin_index_chunk)
 
 
 app = Flask(__name__)
@@ -54,7 +60,6 @@ def check_login_state(session_obj):
         current_state = session_obj['UserSignedIn']
 
     return current_state
-
 
 
 def load_pangolin_resources():
@@ -147,10 +152,49 @@ def darwin_query(template):
     user_logged_in = check_login_state(session)
     
     if user_logged_in:
-        return render_template(template)
+        if app.config['DARWIN_INDEX']:
+            return redirect('/darwin')
+
+        else:
+            return render_template(template)
     
     else:
         return redirect('/login')
+    
+@app.route('/loading_screen2')
+@mobile_template('{mobile/}darwin_loading2.html')
+def load_chunk2(template):
+    return render_template(template)
+
+@app.route('/loading_screen3')
+@mobile_template('{mobile/}darwin_loading3.html')
+def load_chunk3(template):
+    return render_template(template)
+
+@app.route('/loading_screen4')
+@mobile_template('{mobile/}darwin_loading4.html')
+def load_chunk4(template):
+    return render_template(template)
+
+@app.route('/loading_screen5')
+@mobile_template('{mobile/}darwin_loading5.html')
+def load_chunk5(template):
+    return render_template(template)
+
+@app.route('/loading_screen6')
+@mobile_template('{mobile/}darwin_loading6.html')
+def load_chunk6(template):
+    return render_template(template)
+
+@app.route('/loading_screen7')
+@mobile_template('{mobile/}darwin_loading7.html')
+def load_chunk7(template):
+    return render_template(template)
+
+@app.route('/loading_screen8')
+@mobile_template('{mobile/}darwin_loading8.html')
+def load_chunk8(template):
+    return render_template(template)
     
 @app.route('/load_darwin_index')
 def old_darwin_load():
@@ -161,14 +205,56 @@ def get_first_dict():
     print("Step1")
     first_dict = load_first_darwin_index_chunk()
     app.config['DARWIN_DICT'] = app.config['DARWIN_DICT'] | first_dict
-    return redirect('/load_darwin_resources_step2')
+    return "Finished!"
 
 @app.route('/load_darwin_resources_step2')
 def get_second_dict():
     print("Step2")
     second_dict = load_second_darwin_index_chunk()
     app.config['DARWIN_DICT'] = app.config['DARWIN_DICT'] | second_dict
-    return redirect('/create_and_set_darwin_index')
+    return "Finished!"
+
+@app.route('/load_darwin_resources_step3')
+def get_third_dict():
+    print("Step3")
+    new_dict = load_third_darwin_index_chunk()
+    app.config['DARWIN_DICT'] = app.config['DARWIN_DICT'] | new_dict
+    return "Finished!"
+
+@app.route('/load_darwin_resources_step4')
+def get_fourth_dict():
+    print("Step4")
+    new_dict = load_fourth_darwin_index_chunk()
+    app.config['DARWIN_DICT'] = app.config['DARWIN_DICT'] | new_dict
+    return "Finished!"
+
+@app.route('/load_darwin_resources_step5')
+def get_fifth_dict():
+    print("Step5")
+    new_dict = load_fifth_darwin_index_chunk()
+    app.config['DARWIN_DICT'] = app.config['DARWIN_DICT'] | new_dict
+    return "Finished!"
+
+@app.route('/load_darwin_resources_step6')
+def get_sixth_dict():
+    print("Step6")
+    new_dict = load_sixth_darwin_index_chunk()
+    app.config['DARWIN_DICT'] = app.config['DARWIN_DICT'] | new_dict
+    return "Finished!"
+
+@app.route('/load_darwin_resources_step7')
+def get_seventh_dict():
+    print("Step7")
+    new_dict = load_seventh_darwin_index_chunk()
+    app.config['DARWIN_DICT'] = app.config['DARWIN_DICT'] | new_dict
+    return "Finished!"
+
+@app.route('/load_darwin_resources_step8')
+def get_eighth_dict():
+    print("Step8")
+    new_dict = load_eighth_darwin_index_chunk()
+    app.config['DARWIN_DICT'] = app.config['DARWIN_DICT'] | new_dict
+    return "Finished!"
 
 @app.route('/create_and_set_darwin_index')
 def set_index():
@@ -186,9 +272,7 @@ def index(template):
         loaded_index = app.config['DARWIN_INDEX']
 
         if loaded_index is None:
-            return redirect('/load_darwin_resources_step1')
-
-        print(app.config['DARWIN_INDEX'])
+            return redirect('/')
 
         query_text = None
         query_response = ''
